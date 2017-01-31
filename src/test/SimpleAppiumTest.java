@@ -46,11 +46,13 @@ public class SimpleAppiumTest {
 	@Before
 	public void setUp() throws Exception {
 		// set up appium
-		File appDir = new File(System.getProperty("user.dir"), "TestApps");
-		File app = new File(appDir, "PocketForecast.app");
+		String appPath = System.getProperty("appPath");
+		System.out.println("appPath: " + appPath);
+		File app = new File(appPath);
+
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformVersion", "9.0");
-		capabilities.setCapability("deviceName", "iPhone 5");
+		capabilities.setCapability("platformVersion", "8.1");
+		capabilities.setCapability("deviceName", "iPhone 6");
 		capabilities.setCapability("app", app.getAbsolutePath());
 		driver = new IOSDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
 	}
@@ -61,7 +63,28 @@ public class SimpleAppiumTest {
 	}
 
 	@Test
-	public void testLaunch() throws Exception {
+	public void testSignInValidCreds() throws Exception {
+
+		Thread.sleep(3000);
+		// Fill in and submit
+		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIATextField[1]"))
+				.sendKeys("feliks.rozenberg@universe.com");
+		Thread.sleep(1000);
+		driver.findElement(
+				By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIASecureTextField[1]"))
+				.sendKeys("uniiverse");
+		driver.findElement(MobileBy.AccessibilityId("Sign In")).click();
+		Thread.sleep(3000);
+
+		// Allow camera
+		driver.switchTo().alert().accept();
+		Thread.sleep(5000);
+
+		// Switch tab
+		driver.findElement(MobileBy.AccessibilityId("Sell")).click();
+		Thread.sleep(5000);
+
+		assertTrue(driver.findElement(MobileBy.AccessibilityId("Synthetic Free Listing")).isDisplayed());
 
 	}
 
