@@ -68,7 +68,7 @@ public class SimpleAppiumTest {
 		Thread.sleep(3000);
 		// Fill in and submit
 		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIATextField[1]"))
-				.sendKeys("feliks.rozenberg@universe.com");
+				.sendKeys("frozenbe@alumni.uwo.ca");
 		Thread.sleep(1000);
 		driver.findElement(
 				By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIASecureTextField[1]"))
