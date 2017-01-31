@@ -63,16 +63,16 @@ public class SimpleAppiumTest {
 	}
 
 	@Test
-	public void testSignInValidCreds() throws Exception {
+	public void testSignInValidCreds(String userName, String password) throws Exception {
 
 		Thread.sleep(3000);
 		// Fill in and submit
 		driver.findElement(By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIATextField[1]"))
-				.sendKeys("frozenbe@alumni.uwo.ca");
+				.sendKeys(userName);
 		Thread.sleep(1000);
 		driver.findElement(
 				By.xpath("//UIAApplication[1]/UIAWindow[1]/UIAElement[1]/UIAScrollView[1]/UIASecureTextField[1]"))
-				.sendKeys("uniiverse");
+				.sendKeys(password);
 		driver.findElement(MobileBy.AccessibilityId("Sign In")).click();
 		Thread.sleep(3000);
 
