@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.ios.IOSDriver;
+import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import io.appium.java_client.pagefactory.iOSFindAll;
 import io.appium.java_client.pagefactory.iOSFindBy;
 
@@ -15,6 +16,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.support.PageFactory;
 
 /**
  * A simple appium test for the open source maps app which can be downloaded
@@ -43,6 +45,9 @@ public class SimpleAppiumTest {
 
 		simpleAppPageObject = new SimpleAppPageObject();
 		driver = new IOSDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"), capabilities);
+
+		PageFactory.initElements(new AppiumFieldDecorator(driver), simpleAppPageObject);
+
 	}
 
 	@After
