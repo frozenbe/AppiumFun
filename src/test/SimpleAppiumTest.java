@@ -39,7 +39,7 @@ public class SimpleAppiumTest {
 		File app = new File(appPath);
 
 		DesiredCapabilities capabilities = new DesiredCapabilities();
-		capabilities.setCapability("platformVersion", "9.1");
+		capabilities.setCapability("platformVersion", "9.0");
 		capabilities.setCapability("deviceName", "iPhone 6s");
 		capabilities.setCapability("app", app.getAbsolutePath());
 
@@ -57,14 +57,22 @@ public class SimpleAppiumTest {
 
 	@Test
 	public void testLaunchMap() throws Exception {
-
 		simpleAppPageObject.mapElement.click();
 		Thread.sleep(3000);
 		driver.switchTo().alert().accept();
 		Thread.sleep(3000);
 
-		assertTrue(true);
+		assertTrue(simpleAppPageObject.googleMaps.isDisplayed() && simpleAppPageObject.googleMaps.isEnabled());
+	}
 
+	@Test
+	public void testSortingByName() throws Exception {
+		simpleAppPageObject.sortingElement.click();
+		Thread.sleep(1000);
+		simpleAppPageObject.sortingByName.click();
+		Thread.sleep(1000);
+
+		assertTrue(true);
 	}
 
 }
