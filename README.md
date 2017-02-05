@@ -7,6 +7,5 @@ The links to the applications are provided in the comments for the respective te
 
 Example recordings of running the junit tests:
 
-http://recordit.co/oLF14SqKn0
-
+http://g.recordit.co/ifpLlVRBxp.gif
 
